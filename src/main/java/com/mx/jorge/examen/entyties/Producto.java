@@ -5,7 +5,6 @@ import java.util.Set;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -16,9 +15,10 @@ import jakarta.persistence.Table;
 @Table(name = "productos")
 public class Producto implements Serializable{
 	
-	private static final long serialVersionUID = -1731879658691742725L;
-	
+	private static final long serialVersionUID = 7335572256546539735L;
+
 	@Id
+	@Column(name = "id_producto")
 	private Long idProducto;
 	
 	@Column(length = 15)
@@ -27,32 +27,40 @@ public class Producto implements Serializable{
 	@Column(length = 150)
 	private String descripcion;
 	
-	private byte activo;
+	private boolean activo;
 	
-	@OneToMany(mappedBy = "producto", cascade = CascadeType.PERSIST)
+	@OneToMany(mappedBy = "producto")
 	@JsonManagedReference
 	private Set<ListaCompraDetalle> listaDetalle;
-
+	
 	public Producto() {
-
+		
 	}
-
-	public Producto(Long idProducto, String clave, String descripcion, byte activo,
+	
+	public Producto(Long idProducto, String clave, String descripcion, boolean activo,
 			Set<ListaCompraDetalle> listaDetalle) {
+		super();
 		this.idProducto = idProducto;
 		this.clave = clave;
 		this.descripcion = descripcion;
 		this.activo = activo;
 		this.listaDetalle = listaDetalle;
 	}
+	
+	public Producto(Long idProducto) {
+		super();
+		this.idProducto = idProducto;
+	}
 
 	public Set<ListaCompraDetalle> getListaDetalle() {
 		return listaDetalle;
 	}
 
+
 	public void setListaDetalle(Set<ListaCompraDetalle> listaDetalle) {
 		this.listaDetalle = listaDetalle;
 	}
+
 
 	public Long getIdProducto() {
 		return idProducto;
@@ -78,11 +86,11 @@ public class Producto implements Serializable{
 		this.descripcion = descripcion;
 	}
 
-	public byte getActivo() {
+	public boolean getActivo() {
 		return activo;
 	}
 
-	public void setActivo(byte activo) {
+	public void setActivo(boolean activo) {
 		this.activo = activo;
 	}
 	

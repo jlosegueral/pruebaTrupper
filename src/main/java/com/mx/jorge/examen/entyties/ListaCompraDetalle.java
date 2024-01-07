@@ -15,8 +15,8 @@ import jakarta.persistence.Table;
 @Table(name = "lista_compra_detalle")
 public class ListaCompraDetalle implements Serializable{
 
-	private static final long serialVersionUID = 9179046891194503059L;
-	
+	private static final long serialVersionUID = 5764361505267578962L;
+
 	@EmbeddedId
 	private ListaCompraDetallePk pk;
 	
@@ -35,7 +35,7 @@ public class ListaCompraDetalle implements Serializable{
 	private int cantidad;
 
 	public ListaCompraDetalle() {
-		
+
 	}
 
 	public ListaCompraDetalle(ListaCompraDetallePk pk, ListaCompra listaCompra, Producto producto, int cantidad) {
@@ -46,28 +46,13 @@ public class ListaCompraDetalle implements Serializable{
 		this.cantidad = cantidad;
 	}
 
+
 	public ListaCompraDetallePk getPk() {
 		return pk;
 	}
 
 	public void setPk(ListaCompraDetallePk pk) {
 		this.pk = pk;
-	}
-
-	public ListaCompra getListaCompra() {
-		return listaCompra;
-	}
-
-	public void setListaCompra(ListaCompra listaCompra) {
-		this.listaCompra = listaCompra;
-	}
-
-	public Producto getProducto() {
-		return producto;
-	}
-
-	public void setProducto(Producto producto) {
-		this.producto = producto;
 	}
 
 	public int getCantidad() {
@@ -77,5 +62,25 @@ public class ListaCompraDetalle implements Serializable{
 	public void setCantidad(int cantidad) {
 		this.cantidad = cantidad;
 	}
-	
+
+
+	public ListaCompra getListaCompra() {
+		return listaCompra;
+	}
+
+
+	public void setListaCompra(ListaCompra listaCompra) {
+		this.listaCompra = listaCompra;
+	}
+
+
+	public Producto getProducto() {
+		return producto;
+	}
+
+
+	public void setProducto(Producto producto) {
+		this.producto = producto;
+	}
+
 }

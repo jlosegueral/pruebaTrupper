@@ -16,25 +16,26 @@ import jakarta.persistence.Table;
 @Table(name = "clientes")
 public class Cliente implements Serializable{
 
-	private static final long serialVersionUID = -2404793229768249799L;
-	
+	private static final long serialVersionUID = -5329529501381588002L;
+
 	@Id
 	private Long idCliente;
 	
-	@Column(length = 50, nullable = false)
+	@Column(length = 50,nullable = false)
 	private String nombre;
 	
-	private byte activo;
+	private boolean activo;
 	
 	@OneToMany(mappedBy = "cliente", cascade = CascadeType.PERSIST)
 	@JsonManagedReference
 	private List<ListaCompra> listaCompra;
-
+	
+	
 	public Cliente() {
-
+	
 	}
-
-	public Cliente(Long idCliente, String nombre, byte activo, List<ListaCompra> listaCompra) {
+	
+	public Cliente(Long idCliente, String nombre, boolean activo, List<ListaCompra> listaCompra) {
 		super();
 		this.idCliente = idCliente;
 		this.nombre = nombre;
@@ -59,11 +60,11 @@ public class Cliente implements Serializable{
 		this.nombre = nombre;
 	}
 
-	public byte getActivo() {
+	public boolean getActivo() {
 		return activo;
 	}
 
-	public void setActivo(byte activo) {
+	public void setActivo(boolean activo) {
 		this.activo = activo;
 	}
 
@@ -76,5 +77,5 @@ public class Cliente implements Serializable{
 	public void setListaCompra(List<ListaCompra> listaCompra) {
 		this.listaCompra = listaCompra;
 	}
-
+	
 }

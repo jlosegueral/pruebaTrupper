@@ -11,7 +11,6 @@ public class ResponsePostListaCompra {
 	}
 
 	public ResponsePostListaCompra(RequestPostListaCompra request, String mensaje) {
-		super();
 		this.request = request;
 		this.mensaje = mensaje;
 	}
